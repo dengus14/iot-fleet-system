@@ -18,39 +18,101 @@ public class UndirectedGraph {
 
 
     Map<Integer, UndirectedNode> allNodes;
-    Map<Integer, List<Integer>> allNeighbors;
+    Map<Integer, Map<Integer, Double>> edgeWeights;
 
-
+    private Random random = new Random();
     private List<List<Integer>> adjList = new ArrayList<>();
 
     public UndirectedGraph(Integer V) {
         allNodes = new HashMap<>();
         adjList = new ArrayList<>(V);
+        edgeWeights = new HashMap<>();
         for(int i = 0; i < nodes.size(); i++){
             allNodes.put(i, nodes.get(i));
             adjList.add(new ArrayList<>());
         }
     }
 
-
-    public void addEdge(Integer u, Integer v) {
-        if(adjList.get(u).contains(v)){
-            return;
-        }
-        adjList.get(u).add(v);
-        adjList.get(v).add(u);
-    }
-
-    public void createEdges(List<List<Integer>> adjList){
+    public void createEdges(){
         for(UndirectedNode node: nodes){
             for(Integer id: node.getNeighbors()){
-                addEdge(node.getId(), id);
+                Double weight = getRandomDistance(30,600);
+                addWeightedEdge(node.getId(), id, weight);
             }
         }
     }
 
-    public List<Integer> getNeighbors(int u) {
-        return adjList.get(u);
+    public List<Integer> getNeighbors(Integer u) {
+        if(isValidNode(u)){
+            return adjList.get(u);
+        }
+        return null;
+    }
+
+    /**
+     * @param u - first node ID
+     * @param v - second node ID
+     * @return true if they share an edge, false otherwise
+     */
+    public boolean areNeighbors(Integer u, Integer v) {
+        if(!isValidNode(u) || !isValidNode(v)){
+            return false;
+        }
+        if(adjList.get(u).contains(v)){
+            return true;
+        }
+        return false;
+    }
+
+    public Double getRandomDistance(int min, int max){
+        int randomNumber = random.nextInt(max + 1 - min) + min;
+        return Double.valueOf(randomNumber);
+    }
+
+
+    /**
+     * TODO: Add a weighted edge between two nodes
+     * @param u - first node
+     * @param v - second node
+     * @param weight - distance/weight of the edge
+     */
+    public void addWeightedEdge(Integer u, Integer v, Double weight) {
+        if(adjList.get(u).contains(v)){
+            return;  // Edge already exists, skip everything
+        }
+
+        adjList.get(u).add(v);
+        adjList.get(v).add(u);
+
+        edgeWeights.putIfAbsent(u, new HashMap<>());
+        edgeWeights.get(u).put(v, weight);
+        edgeWeights.putIfAbsent(v, new HashMap<>());
+        edgeWeights.get(v).put(u, weight);
+    }
+
+
+
+    /**
+     * TODO: Get the distance/weight between two neighboring nodes
+     * @param u - first node
+     * @param v - second node
+     * @return the weight, or null if not neighbors
+     */
+    public Double getEdgeWeight(Integer u, Integer v) {
+        if(edgeWeights.containsKey(u)){
+            if(edgeWeights.get(u).containsKey(v)){
+                return edgeWeights.get(u).get(v);
+            }
+        }
+        return null;
+    }
+
+    public boolean isValidNode(Integer nodeId) {
+        return allNodes.containsKey(nodeId);
+    }
+
+    public UndirectedNode getNode(Integer id) {
+        return allNodes.get(id);
     }
 
     public void printGraph() {

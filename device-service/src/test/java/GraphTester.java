@@ -6,7 +6,7 @@ public class GraphTester {
     @Test
     public void testGraphCreation() {
         UndirectedGraph graph = new UndirectedGraph(5);
-        graph.createEdges(null);
+        graph.createEdges();
 
         // Add assertions here
         System.out.println("Testing graph:");
