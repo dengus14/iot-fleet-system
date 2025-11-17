@@ -5,16 +5,37 @@ import java.util.*;
 
 public class UndirectedGraph {
 
-    List<Integer> loc1Refs = new ArrayList<>(Arrays.asList(1, 2, 3));
-    List<Integer> loc2Refs = new ArrayList<>(Arrays.asList(0));
-    List<Integer> loc3Refs = new ArrayList<>(Arrays.asList(0, 1));
-    List<Integer> loc4Refs = new ArrayList<>(Arrays.asList(2, 4));
-    List<Integer> loc5Refs = new ArrayList<>(Arrays.asList(0, 2, 3));
-    List<UndirectedNode> nodes = new ArrayList<>(Arrays.asList(new UndirectedNode(0,"Spain", loc1Refs, "Cool Country00"),
-    new UndirectedNode(1,"Russia", loc2Refs, "Cool Country0"),
-    new UndirectedNode(2,"USA", loc3Refs, "Cool Country1"),
-    new UndirectedNode(3,"Mexico", loc4Refs, "Cool Country2"),
-    new UndirectedNode(4,"Canada", loc5Refs, "Cool Country3")));
+
+    // 0: Chicago - connects to Milwaukee, Indianapolis, Detroit
+    List<Integer> chicagoRefs = new ArrayList<>(Arrays.asList(1, 2, 3));
+
+    // 1: Milwaukee - connects to Chicago, Madison
+    List<Integer> milwaukeeRefs = new ArrayList<>(Arrays.asList(0, 4));
+
+    // 2: Indianapolis - connects to Chicago, Cincinnati, Columbus
+    List<Integer> indianapolisRefs = new ArrayList<>(Arrays.asList(0, 5, 6));
+
+    // 3: Detroit - connects to Chicago, Columbus
+    List<Integer> detroitRefs = new ArrayList<>(Arrays.asList(0, 6));
+
+    // 4: Madison - connects to Milwaukee, Minneapolis
+    List<Integer> madisonRefs = new ArrayList<>(Arrays.asList(1, 5));
+
+    // 5: Minneapolis - connects to Madison, Cincinnati
+    List<Integer> minneapolisRefs = new ArrayList<>(Arrays.asList(4, 2));
+
+    // 6: Columbus - connects to Indianapolis, Detroit
+    List<Integer> columbusRefs = new ArrayList<>(Arrays.asList(2, 3));
+
+    List<UndirectedNode> nodes = new ArrayList<>(Arrays.asList(
+            new UndirectedNode(0, "Chicago", chicagoRefs, "Major transportation hub in Illinois"),
+            new UndirectedNode(1, "Milwaukee", milwaukeeRefs, "Largest city in Wisconsin"),
+            new UndirectedNode(2, "Indianapolis", indianapolisRefs, "Capital of Indiana"),
+            new UndirectedNode(3, "Detroit", detroitRefs, "Motor City in Michigan"),
+            new UndirectedNode(4, "Madison", madisonRefs, "Capital of Wisconsin"),
+            new UndirectedNode(5, "Minneapolis", minneapolisRefs, "Twin Cities in Minnesota"),
+            new UndirectedNode(6, "Columbus", columbusRefs, "Capital of Ohio")
+    ));
 
 
     Map<Integer, UndirectedNode> allNodes;
@@ -27,7 +48,7 @@ public class UndirectedGraph {
         allNodes = new HashMap<>();
         adjList = new ArrayList<>(V);
         edgeWeights = new HashMap<>();
-        for(int i = 0; i < nodes.size(); i++){
+        for(int i = 0; i < V; i++){
             allNodes.put(i, nodes.get(i));
             adjList.add(new ArrayList<>());
         }
