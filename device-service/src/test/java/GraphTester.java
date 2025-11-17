@@ -1,3 +1,4 @@
+import model.UndirectedGraph;
 import org.junit.jupiter.api.Test;
 
 public class GraphTester {
