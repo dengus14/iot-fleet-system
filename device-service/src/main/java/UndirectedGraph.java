@@ -1,11 +1,12 @@
 import java.util.*;
 
+
 public class UndirectedGraph {
 
-    List<Integer> loc1Refs = new ArrayList<>(Arrays.asList(0, 1, 2, 3));
-    List<Integer> loc2Refs = new ArrayList<>(Arrays.asList(0, 1));
-    List<Integer> loc3Refs = new ArrayList<>(Arrays.asList(0, 2, 3));
-    List<Integer> loc4Refs = new ArrayList<>(Arrays.asList(2, 3));
+    List<Integer> loc1Refs = new ArrayList<>(Arrays.asList(1, 2, 3));
+    List<Integer> loc2Refs = new ArrayList<>(Arrays.asList(0));
+    List<Integer> loc3Refs = new ArrayList<>(Arrays.asList(0, 1));
+    List<Integer> loc4Refs = new ArrayList<>(Arrays.asList(2, 4));
     List<Integer> loc5Refs = new ArrayList<>(Arrays.asList(0, 2, 3));
     List<UndirectedNode> nodes = new ArrayList<>(Arrays.asList(new UndirectedNode(0,"Spain", loc1Refs, "Cool Country00"),
     new UndirectedNode(1,"Russia", loc2Refs, "Cool Country0"),
@@ -31,6 +32,9 @@ public class UndirectedGraph {
 
 
     public void addEdge(Integer u, Integer v) {
+        if(adjList.get(u).contains(v)){
+            return;
+        }
         adjList.get(u).add(v);
         adjList.get(v).add(u);
     }
