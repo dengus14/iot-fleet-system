@@ -92,7 +92,6 @@ public class UndirectedGraph {
 
 
     /**
-     * TODO: Add a weighted edge between two nodes
      * @param u - first node
      * @param v - second node
      * @param weight - distance/weight of the edge
@@ -114,7 +113,6 @@ public class UndirectedGraph {
 
 
     /**
-     * TODO: Get the distance/weight between two neighboring nodes
      * @param u - first node
      * @param v - second node
      * @return the weight, or null if not neighbors
