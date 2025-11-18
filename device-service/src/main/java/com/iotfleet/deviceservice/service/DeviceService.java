@@ -1,10 +1,12 @@
 package com.iotfleet.deviceservice.service;
 import com.iotfleet.deviceservice.dto.DeviceRequestDTO;
+import com.iotfleet.deviceservice.dto.DeviceTelemetryDTO;
+import com.iotfleet.deviceservice.kafka.DeviceEventProducer;
 import lombok.RequiredArgsConstructor;
 import com.iotfleet.deviceservice.model.Device;
 import com.iotfleet.deviceservice.model.UndirectedGraph;
 import org.springframework.stereotype.Service;
-import com.iotfleet.deviceservice.config.repository.DeviceRepository;
+import com.iotfleet.deviceservice.repository.DeviceRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ public class DeviceService {
 
     private final DeviceRepository deviceRepository;
     private final UndirectedGraph graph;
+    private final DeviceEventProducer eventProducer;
 
 
     /**
@@ -83,10 +86,16 @@ public class DeviceService {
         if (device == null) {
             throw new RuntimeException("Device not found");
         }
+        //updating sensors
         device.setEngineTemp(engineTemp);
         device.setSpeed(speed);
         device.setFuelLevel(fuelLevel);
         deviceRepository.save(device);
+
+        //sending to kafka
+        DeviceTelemetryDTO deviceTelemetryDTO = DeviceTelemetryDTO.getDeviceTelemetryDTO(device);
+        eventProducer.publishDeviceUpdate(deviceTelemetryDTO);
+
         return device;
     }
 

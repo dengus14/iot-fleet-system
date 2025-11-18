@@ -1,4 +1,4 @@
-package com.iotfleet.deviceservice.config.repository;
+package com.iotfleet.deviceservice.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.iotfleet.deviceservice.model.Device;

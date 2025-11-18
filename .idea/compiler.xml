@@ -18,7 +18,7 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
-        <module name="device-service" />
+        <module name="telemetry-service" />
         <module name="user-service" />
       </profile>
       <profile name="Annotation profile for simulator" enabled="true">
@@ -35,6 +35,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="device-service" options="-parameters" />
+      <module name="telemetry-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
   </component>
