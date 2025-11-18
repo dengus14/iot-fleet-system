@@ -1,5 +1,6 @@
 package com.iotfleet.deviceservice.dto;
 
+import com.iotfleet.deviceservice.model.Device;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,4 +21,16 @@ public class DeviceTelemetryDTO {
     private Boolean engineOn;
     private Double fuelLevel;
     private Long timestamp;
+
+
+    public static DeviceTelemetryDTO getDeviceTelemetryDTO(Device device) {
+        DeviceTelemetryDTO deviceTelemetryDTO = new DeviceTelemetryDTO();
+        deviceTelemetryDTO.setDeviceId(device.getId());
+        deviceTelemetryDTO.setDeviceNumber(device.getDeviceNumber());
+        deviceTelemetryDTO.setEngineTemp(device.getEngineTemp());
+        deviceTelemetryDTO.setFuelLevel(device.getFuelLevel());
+        deviceTelemetryDTO.setSpeed(device.getSpeed());
+        deviceTelemetryDTO.setTimestamp(System.currentTimeMillis());
+        return deviceTelemetryDTO;
+    }
 }

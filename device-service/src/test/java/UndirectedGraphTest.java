@@ -13,7 +13,7 @@ public class UndirectedGraphTest {
 
     @BeforeEach
     public void setUp() {
-        graph = new UndirectedGraph(5);
+        graph = new UndirectedGraph(7);
         graph.createEdges();
     }
 
