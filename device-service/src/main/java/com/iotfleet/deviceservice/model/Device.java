@@ -1,7 +1,7 @@
-package model;
+package com.iotfleet.deviceservice.model;
 
-import enums.DeviceStatus;
-import enums.DeviceType;
+import com.iotfleet.deviceservice.enums.DeviceStatus;
+import com.iotfleet.deviceservice.enums.DeviceType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

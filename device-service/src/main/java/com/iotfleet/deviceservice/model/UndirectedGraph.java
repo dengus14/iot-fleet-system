@@ -1,4 +1,4 @@
-package model;
+package com.iotfleet.deviceservice.model;
 
 import java.util.*;
 

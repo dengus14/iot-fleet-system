@@ -1,5 +1,5 @@
-import model.UndirectedGraph;
-import model.UndirectedNode;
+import com.iotfleet.deviceservice.model.UndirectedGraph;
+import com.iotfleet.deviceservice.model.UndirectedNode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

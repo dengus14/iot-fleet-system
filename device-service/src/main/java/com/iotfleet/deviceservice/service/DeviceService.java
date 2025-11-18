@@ -1,12 +1,12 @@
-package service;
-import dto.DeviceRequestDTO;
-import lombok.Data;
+package com.iotfleet.deviceservice.service;
+import com.iotfleet.deviceservice.dto.DeviceRequestDTO;
 import lombok.RequiredArgsConstructor;
-import model.Device;
-import model.UndirectedGraph;
+import com.iotfleet.deviceservice.model.Device;
+import com.iotfleet.deviceservice.model.UndirectedGraph;
 import org.springframework.stereotype.Service;
-import repository.DeviceRepository;
+import com.iotfleet.deviceservice.config.repository.DeviceRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,14 +14,22 @@ import java.util.List;
 public class DeviceService {
 
     private final DeviceRepository deviceRepository;
-
+    private final UndirectedGraph graph;
 
 
     /**
      * @param deviceRequestDTO - the device to create
      * @return the saved device with generated ID
      */
-    public Device createDevice(DeviceRequestDTO deviceRequestDTO) {
+    public Device createDevice(DeviceRequestDTO deviceRequestDTO) throws Exception {
+             if(!graph.isValidNode(deviceRequestDTO.getCurrentLocation()) ||
+                !graph.isValidNode(deviceRequestDTO.getStartLocation())) {
+                 throw new RuntimeException("Invalid location: startLocation=" +
+                         deviceRequestDTO.getStartLocation() + ", currentLocation=" +
+                         deviceRequestDTO.getCurrentLocation());
+        }
+
+
         Device device = Device.builder()
                 .engineTemp(deviceRequestDTO.getEngineTemp())
                 .speed(deviceRequestDTO.getSpeed())
@@ -54,7 +62,11 @@ public class DeviceService {
      * @return list of all devices
      */
     public List<Device> getAllDevices() {
-        return deviceRepository.findAll();
+        List<Device> devices = deviceRepository.findAll();
+        if(devices.isEmpty()) {
+            return new ArrayList<>();
+        }
+        return devices;
     }
 
 

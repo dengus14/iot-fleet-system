@@ -1,4 +1,4 @@
-import model.UndirectedGraph;
+import com.iotfleet.deviceservice.model.UndirectedGraph;
 import org.junit.jupiter.api.Test;
 
 public class GraphTester {

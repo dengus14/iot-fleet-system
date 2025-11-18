@@ -1,13 +1,12 @@
-package controller;
+package com.iotfleet.deviceservice.controller;
 
-import dto.DeviceRequestDTO;
-import dto.DeviceResponseDTO;
+import com.iotfleet.deviceservice.dto.DeviceRequestDTO;
 import lombok.RequiredArgsConstructor;
-import model.Device;
+import com.iotfleet.deviceservice.model.Device;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.DeviceService;
+import com.iotfleet.deviceservice.service.DeviceService;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class DeviceController {
      * @return ResponseEntity with created device and HTTP 201 status
      */
     @PostMapping
-    public ResponseEntity<Device> createDevice(@RequestBody DeviceRequestDTO deviceRequestDTO) {
+    public ResponseEntity<Device> createDevice(@RequestBody DeviceRequestDTO deviceRequestDTO) throws Exception {
         Device device = deviceService.createDevice(deviceRequestDTO);
         return ResponseEntity.ok(device);
     }

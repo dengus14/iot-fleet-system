@@ -1,7 +1,7 @@
-package dto;
+package com.iotfleet.deviceservice.dto;
 
-import enums.DeviceType;
-import enums.DeviceStatus;
+import com.iotfleet.deviceservice.enums.DeviceType;
+import com.iotfleet.deviceservice.enums.DeviceStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,9 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeviceResponseDTO {
-
-    private Long id;
+public class DeviceRequestDTO {
 
     // Device sensors
     private Double engineTemp;
