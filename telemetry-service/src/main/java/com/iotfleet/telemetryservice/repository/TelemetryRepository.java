@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface TelemetryRepository extends JpaRepository<TelemetryRecord, Long> {
-    List<TelemetryRecord> findByDeviceNumber(String deviceNumber);
+    List<TelemetryRecord> findByDeviceNumber(Integer deviceNumber);
 }
