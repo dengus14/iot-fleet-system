@@ -1,1 +1,8 @@
-C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\com\coolcompany\simulator\App.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\backend\BackendClient.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\backend\DeviceDTO.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\config\BackendConfig.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\config\KafkaConfig.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\config\SimulatorConfig.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\config\SimulatorConfigLoader.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\config\SimulatorSettings.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\SimulatorRunner.java
