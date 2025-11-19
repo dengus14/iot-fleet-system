@@ -1,1 +1,9 @@
-com\coolcompany\simulator\App.class
+sim\backend\DeviceDTO.class
+sim\backend\BackendClient$1.class
+sim\config\SimulatorSettings.class
+sim\config\KafkaConfig.class
+sim\backend\BackendClient.class
+sim\config\SimulatorConfig.class
+sim\config\SimulatorConfigLoader.class
+sim\config\BackendConfig.class
+sim\SimulatorRunner.class
