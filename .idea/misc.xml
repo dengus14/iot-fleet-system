@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/device-service/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/telemetry-service/pom.xml" />
+        <option value="$PROJECT_DIR$/route-service/pom.xml" />
       </list>
     </option>
   </component>

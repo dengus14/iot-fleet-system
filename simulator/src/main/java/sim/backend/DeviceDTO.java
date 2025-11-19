@@ -17,7 +17,7 @@ public class DeviceDTO {
     private Integer deviceNumber;
     private Double fuelLevel;
 
-    private Long startLocation;
-    private Long currentLocation;
+    private Integer startLocation;
+    private Integer currentLocation;
     private String deviceStatus;
 }

@@ -30,7 +30,7 @@ public class DeviceTelemetryDTO {
         deviceTelemetryDTO.setEngineTemp(device.getEngineTemp());
         deviceTelemetryDTO.setFuelLevel(device.getFuelLevel());
         deviceTelemetryDTO.setSpeed(device.getSpeed());
-        deviceTelemetryDTO.setTimestamp(System.currentTimeMillis());
+        deviceTelemetryDTO.setTimestamp(Long.valueOf(System.currentTimeMillis()));
         deviceTelemetryDTO.setEngineOn(device.getEngineOn());
         deviceTelemetryDTO.setCurrentLocation(device.getCurrentLocation());
         deviceTelemetryDTO.setPreviousLocation(device.getCurrentLocation());
