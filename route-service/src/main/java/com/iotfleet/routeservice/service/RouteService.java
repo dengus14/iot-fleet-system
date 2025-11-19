@@ -1,5 +1,6 @@
 package com.iotfleet.routeservice.service;
 
+import com.iotfleet.routeservice.dto.RouteCommandDTO;
 import com.iotfleet.routeservice.kafka.RouteCommandProducer;
 import com.iotfleet.routeservice.model.UndirectedGraph;
 import lombok.RequiredArgsConstructor;
@@ -85,5 +86,21 @@ public class RouteService {
             }
         }
         return minNodeId;
+    }
+
+    public String executeRoute(Integer deviceNumber, List<Integer> route){
+        if(!validateRoute(route)){
+            throw new IllegalArgumentException("Route validation failed: consecutive nodes are not neighbors");
+        }
+        String uniqueId = UUID.randomUUID().toString();
+        RouteCommandDTO routeCommandDTO = RouteCommandDTO.builder()
+                .commandId(uniqueId)
+                .deviceNumber(deviceNumber)
+                .plannedRoute(route)
+                .commandType("EXECUTE_ROUTE")
+                .timestamp(System.currentTimeMillis())
+                .build();
+        routeCommandProducer.sendRouteCommand(routeCommandDTO);
+        return uniqueId;
     }
 }

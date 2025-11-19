@@ -16,7 +16,7 @@ public class RouteCommandDTO {
     private String commandId;
     private Integer deviceNumber;
     private String commandType;
-    private List<Integer> route;
+    private List<Integer> plannedRoute;
     private Long timestamp;
 
 
