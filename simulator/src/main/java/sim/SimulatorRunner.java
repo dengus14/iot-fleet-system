@@ -8,6 +8,7 @@ import sim.core.Device;
 import sim.core.DeviceFactory;
 import sim.core.MovementEngine;
 import sim.graph.UndirectedGraph;
+import sim.kafka.RouteCommandConsumer;
 import sim.registry.DeviceRegistry;
 
 import java.util.List;
@@ -24,6 +25,8 @@ private MovementEngine movementEngine;
         List<Device> deviceList = DeviceFactory.fromDTOs(deviceDTOList);
         UndirectedGraph graph = new UndirectedGraph(7);
         movementEngine = new MovementEngine(graph);
+        RouteCommandConsumer kafkaConsumer = new RouteCommandConsumer(registry);
+        kafkaConsumer.startListening();
 
         registry = new DeviceRegistry();
         registry.loadInitialDevices(deviceList);
