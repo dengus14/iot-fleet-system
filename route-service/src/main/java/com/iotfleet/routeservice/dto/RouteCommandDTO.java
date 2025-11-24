@@ -14,6 +14,7 @@ import java.util.List;
 public class RouteCommandDTO {
 
     private String commandId;
+    private String requestId;
     private Integer deviceNumber;
     private String commandType;
     private List<Integer> plannedRoute;

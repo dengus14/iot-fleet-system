@@ -17,8 +17,8 @@ public class RouteCommandProducer {
 
     public void sendRouteCommand(RouteCommandDTO dto) {
         kafkaTemplate.send(TOPIC,
-                dto.getCommandId(),
+                dto.getRequestId(),
                 dto);
-        log.info("Published device update event for device ID: {}", dto.getCommandId());
+        log.info("Published device update event for device ID: {}", dto.getRequestId());
     }
 }
