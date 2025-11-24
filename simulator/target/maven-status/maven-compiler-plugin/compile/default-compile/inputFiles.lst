@@ -5,4 +5,14 @@ C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\
 C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\config\SimulatorConfig.java
 C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\config\SimulatorConfigLoader.java
 C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\config\SimulatorSettings.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\core\Device.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\core\DeviceFactory.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\core\DeviceState.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\core\DeviceType.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\core\MovementEngine.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\dto\RouteCommandDTO.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\dto\RouteRequestDTO.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\graph\UndirectedGraph.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\graph\UndirectedNode.java
+C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\registry\DeviceRegistry.java
 C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\src\main\java\sim\SimulatorRunner.java

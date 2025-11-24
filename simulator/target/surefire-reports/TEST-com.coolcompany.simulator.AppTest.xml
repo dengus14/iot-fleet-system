@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.coolcompany.simulator.AppTest" time="0.071" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.coolcompany.simulator.AppTest" time="0.046" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\alvko\AppData\Local\Temp\surefire6152987323414769413\surefirebooter-20251118142923434_3.jar C:\Users\alvko\AppData\Local\Temp\surefire6152987323414769413 2025-11-18T14-29-23_249-jvmRun1 surefire-20251118142923434_1tmp surefire_0-20251118142923434_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\alvko\AppData\Local\Temp\surefire14200292301730779767\surefirebooter-20251124150042388_3.jar C:\Users\alvko\AppData\Local\Temp\surefire14200292301730779767 2025-11-24T15-00-42_186-jvmRun1 surefire-20251124150042388_1tmp surefire_0-20251124150042388_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\target\test-classes;C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\target\classes;C:\Users\alvko\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0\junit-jupiter-api-5.11.0.jar;C:\Users\alvko\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\alvko\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0\junit-platform-commons-1.11.0.jar;C:\Users\alvko\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\alvko\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.20.1\jackson-databind-2.20.1.jar;C:\Users\alvko\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.1\jackson-annotations-2.17.1.jar;C:\Users\alvko\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.1\jackson-core-2.17.1.jar;C:\Users\alvko\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0\junit-jupiter-params-5.11.0.jar;C:\Users\alvko\.m2\repository\org\projectlombok\lombok\1.18.32\lombok-1.18.32.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\alvko\AppData\Local\Temp\surefire6152987323414769413\surefirebooter-20251118142923434_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\alvko\AppData\Local\Temp\surefire14200292301730779767\surefirebooter-20251124150042388_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.11+7-LTS-207"/>
@@ -56,5 +56,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="com.coolcompany.simulator.AppTest" time="0.035"/>
+  <testcase name="shouldAnswerWithTrue" classname="com.coolcompany.simulator.AppTest" time="0.025"/>
 </testsuite>

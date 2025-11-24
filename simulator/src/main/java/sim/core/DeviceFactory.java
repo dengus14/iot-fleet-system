@@ -17,6 +17,7 @@ public class DeviceFactory {
             device.setEngineOn(d.getEngineOn());
             device.setDeviceNumber(d.getDeviceNumber());
             device.setFuelLevel(d.getFuelLevel());
+            device.setCurrentNodeId(d.getCurrentLocation());
             //more fields if needd
 
 
