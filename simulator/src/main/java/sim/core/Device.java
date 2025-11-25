@@ -2,6 +2,7 @@ package sim.core;
 
 import lombok.Data;
 
+import java.util.List;
 import java.util.Random;
 
 @Data
@@ -21,6 +22,7 @@ public class Device {
     private Integer startLocation;
     private Integer nextNodeId;   // optional for movement step
     private Integer routeIndex;     // pointer inside a route
+    private List<Integer> plannedRoute;
 
     // --- Metadata ---
     private DeviceState state;

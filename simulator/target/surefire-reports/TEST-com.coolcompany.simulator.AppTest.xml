@@ -1,60 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.coolcompany.simulator.AppTest" time="0.046" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.coolcompany.simulator.AppTest" time="0.012" tests="1" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="java.specification.version" value="17"/>
-    <property name="sun.cpu.isalist" value="amd64"/>
-    <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\target\test-classes;C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\target\classes;C:\Users\alvko\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0\junit-jupiter-api-5.11.0.jar;C:\Users\alvko\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\alvko\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0\junit-platform-commons-1.11.0.jar;C:\Users\alvko\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\alvko\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.20.1\jackson-databind-2.20.1.jar;C:\Users\alvko\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.1\jackson-annotations-2.17.1.jar;C:\Users\alvko\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.1\jackson-core-2.17.1.jar;C:\Users\alvko\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0\junit-jupiter-params-5.11.0.jar;C:\Users\alvko\.m2\repository\org\projectlombok\lombok\1.18.32\lombok-1.18.32.jar;"/>
-    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/target/test-classes:/Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/target/classes:/Users/denisgusev/.m2/repository/org/apache/kafka/kafka-clients/3.9.1/kafka-clients-3.9.1.jar:/Users/denisgusev/.m2/repository/com/github/luben/zstd-jni/1.5.6-4/zstd-jni-1.5.6-4.jar:/Users/denisgusev/.m2/repository/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar:/Users/denisgusev/.m2/repository/org/xerial/snappy/snappy-java/1.1.10.5/snappy-java-1.1.10.5.jar:/Users/denisgusev/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.18.2/jackson-databind-2.18.2.jar:/Users/denisgusev/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.1/jackson-annotations-2.17.1.jar:/Users/denisgusev/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.jar:/Users/denisgusev/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar:/Users/denisgusev/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.0/junit-jupiter-api-5.11.0.jar:/Users/denisgusev/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/denisgusev/.m2/repository/org/junit/platform/junit-platform-commons/1.11.0/junit-platform-commons-1.11.0.jar:/Users/denisgusev/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/denisgusev/.m2/repository/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar:/Users/denisgusev/.m2/repository/org/slf4j/slf4j-simple/2.0.9/slf4j-simple-2.0.9.jar:/Users/denisgusev/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.0/junit-jupiter-params-5.11.0.jar:"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="user.variant" value=""/>
-    <property name="java.vendor.url" value="https://java.oracle.com/"/>
-    <property name="user.timezone" value="America/Chicago"/>
-    <property name="os.name" value="Windows 11"/>
-    <property name="java.vm.specification.version" value="17"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="21"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
-    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\alvko\AppData\Local\Temp\surefire14200292301730779767\surefirebooter-20251124150042388_3.jar C:\Users\alvko\AppData\Local\Temp\surefire14200292301730779767 2025-11-24T15-00-42_186-jvmRun1 surefire-20251124150042388_1tmp surefire_0-20251124150042388_2tmp"/>
+    <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk@21/21.0.9/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/target/surefire/surefirebooter-20251125171808295_3.jar /Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/target/surefire 2025-11-25T17-18-07_094-jvmRun1 surefire-20251125171808295_1tmp surefire_0-20251125171808295_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\target\test-classes;C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator\target\classes;C:\Users\alvko\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0\junit-jupiter-api-5.11.0.jar;C:\Users\alvko\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\alvko\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0\junit-platform-commons-1.11.0.jar;C:\Users\alvko\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\alvko\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.20.1\jackson-databind-2.20.1.jar;C:\Users\alvko\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.1\jackson-annotations-2.17.1.jar;C:\Users\alvko\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.1\jackson-core-2.17.1.jar;C:\Users\alvko\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0\junit-jupiter-params-5.11.0.jar;C:\Users\alvko\.m2\repository\org\projectlombok\lombok\1.18.32\lombok-1.18.32.jar;"/>
+    <property name="surefire.test.class.path" value="/Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/target/test-classes:/Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/target/classes:/Users/denisgusev/.m2/repository/org/apache/kafka/kafka-clients/3.9.1/kafka-clients-3.9.1.jar:/Users/denisgusev/.m2/repository/com/github/luben/zstd-jni/1.5.6-4/zstd-jni-1.5.6-4.jar:/Users/denisgusev/.m2/repository/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar:/Users/denisgusev/.m2/repository/org/xerial/snappy/snappy-java/1.1.10.5/snappy-java-1.1.10.5.jar:/Users/denisgusev/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.18.2/jackson-databind-2.18.2.jar:/Users/denisgusev/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.1/jackson-annotations-2.17.1.jar:/Users/denisgusev/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.1/jackson-core-2.17.1.jar:/Users/denisgusev/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar:/Users/denisgusev/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.0/junit-jupiter-api-5.11.0.jar:/Users/denisgusev/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/denisgusev/.m2/repository/org/junit/platform/junit-platform-commons/1.11.0/junit-platform-commons-1.11.0.jar:/Users/denisgusev/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/denisgusev/.m2/repository/org/slf4j/slf4j-api/2.0.9/slf4j-api-2.0.9.jar:/Users/denisgusev/.m2/repository/org/slf4j/slf4j-simple/2.0.9/slf4j-simple-2.0.9.jar:/Users/denisgusev/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.0/junit-jupiter-params-5.11.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="C:\Users\alvko"/>
+    <property name="user.home" value="/Users/denisgusev"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.version.date" value="2024-04-16"/>
-    <property name="java.home" value="C:\Program Files\Java\jdk-17"/>
-    <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator"/>
+    <property name="java.version.date" value="2025-10-21"/>
+    <property name="java.home" value="/opt/homebrew/Cellar/openjdk@21/21.0.9/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\alvko\AppData\Local\Temp\surefire14200292301730779767\surefirebooter-20251124150042388_3.jar"/>
-    <property name="user.script" value=""/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/target/surefire/surefirebooter-20251125171808295_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="java.runtime.version" value="17.0.11+7-LTS-207"/>
-    <property name="user.name" value="alvko"/>
-    <property name="path.separator" value=";"/>
-    <property name="os.version" value="10.0"/>
-    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="file.encoding" value="Cp1252"/>
-    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="localRepository" value="C:\Users\alvko\.m2\repository"/>
-    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
-    <property name="java.io.tmpdir" value="C:\Users\alvko\AppData\Local\Temp\"/>
-    <property name="java.version" value="17.0.11"/>
-    <property name="user.dir" value="C:\Users\alvko\OneDrive\Desktop\Playground\iotfleet\simulator"/>
-    <property name="os.arch" value="amd64"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="21.0.9"/>
+    <property name="user.name" value="denisgusev"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="26.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="localRepository" value="/Users/denisgusev/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/8j/kzbwkj956w1381fmzk6zn4600000gn/T/"/>
+    <property name="java.version" value="21.0.9"/>
+    <property name="user.dir" value="/Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator"/>
+    <property name="os.arch" value="aarch64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="sun.os.patch.level" value=""/>
-    <property name="native.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-17\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Eclipse Adoptium\jre-8.0.312.7-hotspot\bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files (x86)\SMLNJ\bin\;C:\Program Files\nodejs\;C:\Program Files\swipl\bin;C:\Program Files\GitHub CLI\;C:\Program Files\Mullvad VPN\resources;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Muse Hub\lib;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\MinGW\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\apache-maven-3.9.11\bin;C:\Users\alvko\AppData\Local\Programs\Python\Python38\Scripts\;C:\Users\alvko\AppData\Local\Programs\Python\Python38\;C:\Users\alvko\AppData\Local\Programs\Python\Launcher\;C:\Users\alvko\AppData\Local\Microsoft\WindowsApps;C:\Users\alvko\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\alvko\AppData\Local\JetBrains\Toolbox\scripts;C:\Users\alvko\.dotnet\tools;C:\Program Files\JetBrains\PyCharm Community Edition 2024.2.2\bin;;C:\Users\alvko\AppData\Roaming\npm;C:\Users\alvko\AppData\Local\Microsoft\WindowsApps;;C:\Users\alvko\AppData\Local\Programs\Ollama;."/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/denisgusev/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="java.vm.version" value="17.0.11+7-LTS-207"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-    <property name="java.class.version" value="61.0"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="java.vm.version" value="21.0.9"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="com.coolcompany.simulator.AppTest" time="0.025"/>
+  <testcase name="shouldAnswerWithTrue" classname="com.coolcompany.simulator.AppTest" time="0.007"/>
 </testsuite>

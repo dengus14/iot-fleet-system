@@ -1,6 +1,6 @@
 package sim;
 
-
+import lombok.extern.slf4j.Slf4j;
 import sim.backend.BackendClient;
 import sim.backend.DeviceDTO;
 import sim.config.BackendConfig;
@@ -8,11 +8,12 @@ import sim.core.Device;
 import sim.core.DeviceFactory;
 import sim.core.MovementEngine;
 import sim.graph.UndirectedGraph;
+import sim.kafka.RouteCommandConsumer;
 import sim.registry.DeviceRegistry;
 
 import java.util.List;
 
-
+@Slf4j
 public class SimulatorRunner {
 private DeviceRegistry registry;
 private MovementEngine movementEngine;
@@ -30,9 +31,11 @@ private MovementEngine movementEngine;
         graph.printGraph();
         movementEngine = new MovementEngine(graph);
 
+
         registry = new DeviceRegistry();
         registry.loadInitialDevices(deviceList);
-
+        RouteCommandConsumer kafkaConsumer = new RouteCommandConsumer(registry);
+        kafkaConsumer.startListening();
         runSimulationLoop();
     }
 
