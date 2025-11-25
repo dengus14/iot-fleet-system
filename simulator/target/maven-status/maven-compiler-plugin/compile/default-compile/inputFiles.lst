@@ -7,11 +7,11 @@
 /Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/src/main/java/sim/config/SimulatorConfigLoader.java
 /Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/src/main/java/sim/config/SimulatorConfig.java
 /Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/src/main/java/sim/dto/RouteCommandDTO.java
-/Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/src/main/java/sim/kafka/Producer.java
+/Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/src/main/java/sim/kafka/RouteCommandConsumer.java
 /Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/src/main/java/sim/config/SimulatorSettings.java
+/Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/src/main/java/sim/kafka/RouteRequestProducer.java
 /Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/src/main/java/sim/registry/DeviceRegistry.java
 /Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/src/main/java/sim/SimulatorRunner.java
-/Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/src/main/java/sim/kafka/Consumer.java
 /Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/src/main/java/sim/dto/RouteRequestDTO.java
 /Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/src/main/java/sim/core/Device.java
 /Users/denisgusev/JavaFullStack-1/iot-fleet-system/simulator/src/main/java/sim/core/DeviceFactory.java

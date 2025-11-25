@@ -25,18 +25,19 @@ private MovementEngine movementEngine;
         List<Device> deviceList = DeviceFactory.fromDTOs(deviceDTOList);
         UndirectedGraph graph = new UndirectedGraph(7);
         movementEngine = new MovementEngine(graph);
-        RouteCommandConsumer kafkaConsumer = new RouteCommandConsumer(registry);
-        kafkaConsumer.startListening();
+
 
         registry = new DeviceRegistry();
         registry.loadInitialDevices(deviceList);
+        RouteCommandConsumer kafkaConsumer = new RouteCommandConsumer(registry);
+        kafkaConsumer.startListening();
         runSimulationLoop();
     }
 
     private void runSimulationLoop() throws InterruptedException {
         while(true) {
             tick();
-            Thread.sleep(100);
+            Thread.sleep(2000);
         }
     }
     private void tick(){
