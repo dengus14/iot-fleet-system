@@ -44,6 +44,15 @@ public class UndirectedGraph {
     private Random random = new Random();
     private List<List<Integer>> adjList = new ArrayList<>();
 
+    public Map<Integer, UndirectedNode> getCities() {
+        return allNodes;
+    }
+
+    public String getCityName(int nodeId) {
+        return allNodes.get(nodeId).getLocationName();
+    }
+
+
     public UndirectedGraph(Integer V) {
         allNodes = new HashMap<>();
         adjList = new ArrayList<>(V);
