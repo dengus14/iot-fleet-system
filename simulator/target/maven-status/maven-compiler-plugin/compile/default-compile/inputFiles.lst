@@ -2,6 +2,7 @@
 /Users/denisgusev/JavaFullStack-132/iot-fleet-system/simulator/src/main/java/sim/graph/UndirectedNode.java
 /Users/denisgusev/JavaFullStack-132/iot-fleet-system/simulator/src/main/java/sim/config/SimulatorConfig.java
 /Users/denisgusev/JavaFullStack-132/iot-fleet-system/simulator/src/main/java/sim/dto/RouteRequestDTO.java
+/Users/denisgusev/JavaFullStack-132/iot-fleet-system/simulator/src/main/java/sim/cli/CLIController.java
 /Users/denisgusev/JavaFullStack-132/iot-fleet-system/simulator/src/main/java/sim/registry/DeviceRegistry.java
 /Users/denisgusev/JavaFullStack-132/iot-fleet-system/simulator/src/main/java/sim/config/SimulatorConfigLoader.java
 /Users/denisgusev/JavaFullStack-132/iot-fleet-system/simulator/src/main/java/sim/backend/DeviceDTO.java

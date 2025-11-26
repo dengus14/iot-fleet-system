@@ -1,5 +1,6 @@
 package sim.cli;
 
+import sim.core.DeviceState;
 import sim.graph.UndirectedNode;
 import sim.registry.DeviceRegistry;
 import sim.kafka.RouteRequestProducer;
@@ -7,6 +8,7 @@ import sim.graph.UndirectedGraph;
 import sim.core.Device;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -26,7 +28,7 @@ public class CLIController {
         this.scanner = new Scanner(System.in);
     }
 
-    public void run() {
+    public void run() throws InterruptedException {
         System.out.println("Welcome to IoT Fleet Simulator");
         boolean running = true;
 
@@ -91,7 +93,7 @@ public class CLIController {
         }
     }
 
-    private void moveDevice() {
+    private void moveDevice() throws InterruptedException {
         viewDevices();
 
         System.out.print("Enter device number: ");
@@ -116,10 +118,26 @@ public class CLIController {
             System.out.println("Invalid destination node.");
             return;
         }
-
+        device.setPlannedRoute(null);
         routeRequestProducer.sendRouteRequest(deviceNumber, device.getCurrentNodeId(), destination);
 
         System.out.println("Route request sent!");
+        try{
+            int waitCount = 0;
+            while (device.getPlannedRoute() == null && waitCount < 60) {
+                Thread.sleep(500);
+                waitCount++;
+            }
+        }catch(InterruptedException e){
+            Thread.currentThread().interrupt();
+            System.out.println("Interrupted while waiting for route.");
+            return;
+        }
+        if (device.getPlannedRoute() == null) {
+            System.out.println("Timeout: No route received from Route Service");
+            return;
+        }
+        executeRoute(device, device.getPlannedRoute());
     }
 
     private void displayAvailableCities() {
@@ -131,5 +149,72 @@ public class CLIController {
 
     private String getCityName(int nodeId) {
         return graph.getCityName(nodeId);
+    }
+
+
+    private void executeRoute(Device device, List<Integer> route) throws InterruptedException {
+        System.out.println("Starting route: " + route);
+
+        //setting device state and engine on
+        device.setState(DeviceState.InRoute);
+        device.setEngineOn(true);
+
+        // Loop through each leg of the journey
+        for (int i = 0; i < route.size() - 1; i++) {
+            int fromNode = route.get(i);
+            int toNode = route.get(i + 1);
+
+
+            System.out.print("Route from " + getCityName(fromNode) + " to " + getCityName(toNode) + ": ");
+
+            //gettign the distance between cities
+            Double edgeDistance = graph.getEdgeWeight(fromNode, toNode);
+            System.out.println("Distance is: " + edgeDistance);
+
+            //resetting progress for this edge
+            device.setProgressOnEdge(0.0);
+
+            //simulate traveling along this edge
+            while (device.getProgressOnEdge() < 1.0 && device.getFuelLevel() > 0) {
+
+                //same logic as movement engine
+                 double speed = device.getSpeed();
+                 System.out.println("Speed: " + speed);
+                 double kmPerSecond = speed / 3600;
+                 double deltaSeconds = 200.0;  // 1 second per tick
+                 double kmThisTick = kmPerSecond * deltaSeconds;
+                 double progressIncrement = kmThisTick / edgeDistance;
+
+                //updating progress
+                 device.setProgressOnEdge(device.getProgressOnEdge() + progressIncrement);
+
+                //movement engine logic for fuel
+                 device.setFuelLevel(device.getFuelLevel() - speed * 0.0500);
+                 if (device.getFuelLevel() <= 0) {
+                     device.setFuelLevel(0.0);
+                     device.setState(DeviceState.EngineOff);
+                     System.out.println("Out of fuel! Stopped at progress: " + device.getProgressOnEdge());
+                     return;
+                 }
+
+                //printing progress
+                 System.out.println("  Progress: " + (int)(device.getProgressOnEdge() * 100) + "%");
+                 System.out.println("  Fuel level: " + device.getFuelLevel());
+
+                //sleeping for real like simulation
+                 Thread.sleep(1000);
+            }
+
+            //arriving at next node
+             device.setCurrentNodeId(toNode);
+             device.setProgressOnEdge(0.0);
+            System.out.println("Arrived at " + getCityName(toNode));
+        }
+
+
+         device.setState(DeviceState.Arrived);
+         device.setPlannedRoute(null);
+         System.out.println("Arrived at " + getCityName(device.getCurrentNodeId()));
+        // Print "Journey complete!"
     }
 }

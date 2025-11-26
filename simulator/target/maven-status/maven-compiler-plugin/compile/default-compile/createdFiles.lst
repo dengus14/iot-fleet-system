@@ -17,6 +17,7 @@ sim/config/KafkaConfig.class
 sim/config/SimulatorSettings.class
 sim/kafka/RouteRequestProducer.class
 sim/SimulatorRunner.class
+sim/cli/CLIController.class
 sim/dto/RouteRequestDTO.class
 sim/core/DeviceState.class
 sim/core/Device.class
