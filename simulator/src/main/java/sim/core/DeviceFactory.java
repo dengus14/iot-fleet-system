@@ -1,6 +1,7 @@
 package sim.core;
 
 import sim.backend.DeviceDTO;
+import sim.dto.DeviceConfigDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,5 +27,14 @@ public class DeviceFactory {
 
         return devices;
     }
-
+    public static Device fromConfig(DeviceConfigDTO dto){
+        Device device = new Device();
+        device.setId(dto.getDeviceId());
+        device.setSpeed(dto.getSpeed());
+        device.setEngineOn(dto.getEngineOn());
+        device.setDeviceNumber(dto.getDeviceNumber());
+        device.setFuelLevel(dto.getFuelLevel());
+        device.setCurrentNodeId(dto.getCurrentLocation());
+        return device;
+    }
 }

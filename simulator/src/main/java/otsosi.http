@@ -1,0 +1,14 @@
+POST http://localhost:8081/api/devices
+Content-Type: application/json
+
+{
+  "engineTemp": 80.0,
+  "speed": 10000.0,
+  "engineOn": false,
+  "deviceNumber": 1002,
+  "fuelLevel": 95.0,
+  "deviceType": "Van",
+  "startLocation": 3,
+  "currentLocation": 3,
+  "deviceStatus": "EngineOff"
+}

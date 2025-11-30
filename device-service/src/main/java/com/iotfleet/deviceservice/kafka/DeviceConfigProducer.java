@@ -14,11 +14,18 @@ public class DeviceConfigProducer {
     private final KafkaTemplate<String, DeviceConfigDTO> kafkaTemplate;
     private static final String TOPIC = "device-create-events";
     public void publishDeviceCreated(DeviceConfigDTO event){
-        kafkaTemplate.send(
-                TOPIC,
-                event.getDeviceId().toString(),
-                event
-        );
+        try{
+            kafkaTemplate.send(
+                    TOPIC,
+                    event.getDeviceId().toString(),
+                    event
+            );
+
+    } catch(Exception e)
+
+    {
+        log.error("!!!!!!!!!!!!!!!!!!Error {}",e);
+    }
         log.info("Published DEVICE-CREATED event for {}", event.getDeviceId());
 
 
