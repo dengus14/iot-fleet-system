@@ -3,6 +3,7 @@ package sim;
 import lombok.extern.slf4j.Slf4j;
 import sim.backend.BackendClient;
 import sim.backend.DeviceDTO;
+import sim.cli.CLIController;
 import sim.config.BackendConfig;
 import sim.core.Device;
 import sim.core.DeviceFactory;
@@ -10,6 +11,7 @@ import sim.core.MovementEngine;
 import sim.graph.UndirectedGraph;
 import sim.kafka.DeviceConfigConsumer;
 import sim.kafka.RouteCommandConsumer;
+import sim.kafka.RouteRequestProducer;
 import sim.registry.DeviceRegistry;
 
 import java.util.List;
@@ -42,7 +44,10 @@ private MovementEngine movementEngine;
         deviceConfigConsumer.startListening();
 
 
-        runSimulationLoop();
+        //runSimulationLoop();
+        RouteRequestProducer routeRequestProducer = new RouteRequestProducer();
+        CLIController cli = new CLIController(registry, routeRequestProducer, graph);
+        cli.run();
     }
 
     private void runSimulationLoop() throws InterruptedException {
