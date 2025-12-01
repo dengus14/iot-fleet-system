@@ -84,7 +84,7 @@ public class CLIController {
 
         else {
             for (Device device : devices) {
-                System.out.println("Device Number: " + device.getDeviceNumber()
+                System.out.println("Device ID: " + device.getId()
                         + ", Type: " + device.getDeviceType()
                         + ", At city: " + getCityName(device.getCurrentNodeId())
                         + ", the engine is " + engineOnOrOff(device.getEngineOn())
@@ -96,14 +96,14 @@ public class CLIController {
     private void moveDevice() throws InterruptedException {
         viewDevices();
 
-        System.out.print("Enter device number: ");
+        System.out.print("Enter device ID: ");
         int deviceNumber = scanner.nextInt();
         scanner.nextLine();
 
         Device device = deviceRegistry.getDevice((long) deviceNumber);
 
         if(device == null) {
-            System.out.println("Invalid device number.");
+            System.out.println("Invalid device ID.");
             return;
         }
 
@@ -181,7 +181,7 @@ public class CLIController {
                  double speed = device.getSpeed();
                  System.out.println("Speed: " + speed);
                  double kmPerSecond = speed / 3600;
-                 double deltaSeconds = 200.0;  // 1 second per tick
+                 double deltaSeconds = 200.0;  // 200 delta seconds per tick
                  double kmThisTick = kmPerSecond * deltaSeconds;
                  double progressIncrement = kmThisTick / edgeDistance;
 
@@ -189,7 +189,7 @@ public class CLIController {
                  device.setProgressOnEdge(device.getProgressOnEdge() + progressIncrement);
 
                 //movement engine logic for fuel
-                 device.setFuelLevel(device.getFuelLevel() - speed * 0.0500);
+                 device.setFuelLevel(device.getFuelLevel() - speed * 0.0350);
                  if (device.getFuelLevel() <= 0) {
                      device.setFuelLevel(0.0);
                      device.setState(DeviceState.EngineOff);

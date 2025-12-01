@@ -13,6 +13,7 @@ public class DeviceFactory {
         Device device = new Device();
             device.setId(d.getId());
             device.setEngineTemp(d.getEngineTemp());
+            device.setDeviceType(DeviceType.valueOf(d.getDeviceType()));
             device.setSpeed(d.getSpeed());
             device.setEngineOn(d.getEngineOn());
             device.setDeviceNumber(d.getDeviceNumber());
