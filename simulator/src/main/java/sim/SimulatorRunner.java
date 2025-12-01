@@ -9,6 +9,7 @@ import sim.core.Device;
 import sim.core.DeviceFactory;
 import sim.core.MovementEngine;
 import sim.graph.UndirectedGraph;
+import sim.kafka.DeviceConfigConsumer;
 import sim.kafka.RouteCommandConsumer;
 import sim.kafka.RouteRequestProducer;
 import sim.registry.DeviceRegistry;
@@ -38,6 +39,12 @@ private MovementEngine movementEngine;
         registry.loadInitialDevices(deviceList);
         RouteCommandConsumer kafkaConsumer = new RouteCommandConsumer(registry);
         kafkaConsumer.startListening();
+
+        DeviceConfigConsumer deviceConfigConsumer = new DeviceConfigConsumer(registry);
+        deviceConfigConsumer.startListening();
+
+
+        //runSimulationLoop();
         RouteRequestProducer routeRequestProducer = new RouteRequestProducer();
         CLIController cli = new CLIController(registry, routeRequestProducer, graph);
         cli.run();
