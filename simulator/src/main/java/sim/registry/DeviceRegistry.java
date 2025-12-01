@@ -6,9 +6,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class DeviceRegistry {
-    private final Map<Long, Device> devices = new HashMap<>();
+    private final Map<Long, Device> devices = new ConcurrentHashMap<>();
 
     public void loadInitialDevices(Collection<Device> devices){
         this.devices.clear();

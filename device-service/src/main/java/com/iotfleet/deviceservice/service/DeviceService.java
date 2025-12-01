@@ -1,6 +1,8 @@
 package com.iotfleet.deviceservice.service;
+import com.iotfleet.deviceservice.dto.DeviceConfigDTO;
 import com.iotfleet.deviceservice.dto.DeviceRequestDTO;
 import com.iotfleet.deviceservice.dto.DeviceTelemetryDTO;
+import com.iotfleet.deviceservice.kafka.DeviceConfigProducer;
 import com.iotfleet.deviceservice.kafka.DeviceEventProducer;
 import lombok.RequiredArgsConstructor;
 import com.iotfleet.deviceservice.model.Device;
@@ -18,6 +20,7 @@ public class DeviceService {
     private final DeviceRepository deviceRepository;
     private final UndirectedGraph graph;
     private final DeviceEventProducer eventProducer;
+    private final DeviceConfigProducer configProducer;
 
 
     /**
@@ -46,6 +49,21 @@ public class DeviceService {
                 .build();
 
         deviceRepository.save(device);
+
+//Kafka
+        DeviceConfigDTO configDto = DeviceConfigDTO.builder()
+                .deviceId(device.getId())
+                .speed(device.getSpeed())
+                .engineOn(device.getEngineOn())
+                .deviceNumber(device.getDeviceNumber())
+                .fuelLevel(device.getFuelLevel())
+                .deviceType(device.getDeviceType())
+                .startLocation(device.getStartLocation())
+                .currentLocation(device.getCurrentLocation())
+                .deviceStatus(device.getDeviceStatus())
+                .build();
+
+        configProducer.publishDeviceCreated(configDto);
         return device;
     }
 
