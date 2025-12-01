@@ -33,6 +33,7 @@ public class DeviceFactory {
         device.setId(dto.getDeviceId());
         device.setSpeed(dto.getSpeed());
         device.setEngineOn(dto.getEngineOn());
+        device.setDeviceType(dto.getDeviceType());
         device.setDeviceNumber(dto.getDeviceNumber());
         device.setFuelLevel(dto.getFuelLevel());
         device.setCurrentNodeId(dto.getCurrentLocation());
