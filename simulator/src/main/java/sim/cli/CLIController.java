@@ -1,7 +1,9 @@
 package sim.cli;
 
 import sim.core.DeviceState;
+import sim.dto.DeviceTelemetryDTO;
 import sim.graph.UndirectedNode;
+import sim.kafka.TelemetryProducer;
 import sim.registry.DeviceRegistry;
 import sim.kafka.RouteRequestProducer;
 import sim.graph.UndirectedGraph;
@@ -18,14 +20,16 @@ public class CLIController {
     private final RouteRequestProducer routeRequestProducer;
     private final UndirectedGraph graph;
     private final Scanner scanner;
+    private final TelemetryProducer telemetryProducer;
 
     public CLIController(DeviceRegistry deviceRegistry,
                          RouteRequestProducer routeRequestProducer,
-                         UndirectedGraph graph) {
+                         UndirectedGraph graph, TelemetryProducer telemetryProducer) {
         this.deviceRegistry = deviceRegistry;
         this.routeRequestProducer = routeRequestProducer;
         this.graph = graph;
         this.scanner = new Scanner(System.in);
+        this.telemetryProducer = telemetryProducer;
     }
 
     public void run() throws InterruptedException {
@@ -200,6 +204,7 @@ public class CLIController {
                 //printing progress
                  System.out.println("  Progress: " + (int)(device.getProgressOnEdge() * 100) + "%");
                  System.out.println("  Fuel level: " + device.getFuelLevel());
+                 telemetryProducer.publishTelemetry(buildTelemetry(device, fromNode));
 
                 //sleeping for real like simulation
                  Thread.sleep(1000);
@@ -216,5 +221,20 @@ public class CLIController {
          device.setPlannedRoute(null);
          System.out.println("Arrived at " + getCityName(device.getCurrentNodeId()));
         // Print "Journey complete!"
+    }
+
+    private DeviceTelemetryDTO buildTelemetry(Device device, Integer previousLocation) {
+        DeviceTelemetryDTO dto = DeviceTelemetryDTO.builder()
+                .deviceId(device.getId())
+                .deviceNumber(device.getDeviceNumber())
+                .currentLocation(device.getCurrentNodeId())
+                .previousLocation(previousLocation)
+                .speed(device.getSpeed())
+                .engineOn(device.getEngineOn())
+                .engineTemp(device.getEngineTemp())
+                .fuelLevel(device.getFuelLevel())
+                .timestamp(System.currentTimeMillis())
+                .build();
+        return dto;
     }
 }
