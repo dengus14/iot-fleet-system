@@ -1,6 +1,7 @@
 package sim.cli;
 
 import sim.core.DeviceState;
+import sim.core.DeviceType;
 import sim.dto.DeviceTelemetryDTO;
 import sim.graph.UndirectedNode;
 import sim.kafka.TelemetryProducer;
@@ -101,10 +102,10 @@ public class CLIController {
         viewDevices();
 
         System.out.print("Enter device ID: ");
-        int deviceNumber = scanner.nextInt();
+        int deviceId = scanner.nextInt();
         scanner.nextLine();
 
-        Device device = deviceRegistry.getDevice((long) deviceNumber);
+        Device device = deviceRegistry.getDeviceById((long) deviceId);
 
         if(device == null) {
             System.out.println("Invalid device ID.");
@@ -123,7 +124,7 @@ public class CLIController {
             return;
         }
         device.setPlannedRoute(null);
-        routeRequestProducer.sendRouteRequest(deviceNumber, device.getCurrentNodeId(), destination);
+        routeRequestProducer.sendRouteRequest(deviceId, device.getCurrentNodeId(), destination);
 
         System.out.println("Route request sent!");
         try{
@@ -189,11 +190,13 @@ public class CLIController {
                  double kmThisTick = kmPerSecond * deltaSeconds;
                  double progressIncrement = kmThisTick / edgeDistance;
 
+
                 //updating progress
                  device.setProgressOnEdge(device.getProgressOnEdge() + progressIncrement);
 
                 //movement engine logic for fuel
-                 device.setFuelLevel(device.getFuelLevel() - speed * 0.0350);
+                 double fuelConsumed = kmThisTick / fuelConsumption(device.getDeviceType());
+                 device.setFuelLevel(device.getFuelLevel() - fuelConsumed);
                  if (device.getFuelLevel() <= 0) {
                      device.setFuelLevel(0.0);
                      device.setState(DeviceState.EngineOff);
@@ -236,5 +239,29 @@ public class CLIController {
                 .timestamp(System.currentTimeMillis())
                 .build();
         return dto;
+    }
+
+
+    private Double fuelConsumption(DeviceType deviceType) {
+        switch (deviceType) {
+            default -> {
+                return 1.0;
+            }
+            case Car -> {
+                return 30.0;
+            }
+            case Van ->  {
+                return 20.0;
+            }
+            case Plane ->   {
+                return 10.0;
+            }
+            case Truck ->   {
+                return 5.0;
+            }
+            case Motorcycle ->   {
+                return 40.0;
+            }
+        }
     }
 }

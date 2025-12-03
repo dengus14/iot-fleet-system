@@ -3,8 +3,6 @@ package sim.registry;
 import sim.core.Device;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -25,7 +23,7 @@ public class DeviceRegistry {
     public boolean removeDevice(Long id){
         return devices.remove(id) != null;
     }
-    public Device getDevice(Long id){
+    public Device getDeviceById(Long id){
         return devices.get(id);
     }
     public Collection<Device> getAllDevices(){

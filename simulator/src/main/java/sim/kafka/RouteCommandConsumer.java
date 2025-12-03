@@ -76,7 +76,7 @@ public class RouteCommandConsumer {
                     " for device " + dto.getDeviceNumber() +
                     " with route: " + dto.getPlannedRoute());
 
-            Device device = deviceRegistry.getDevice(dto.getDeviceNumber().longValue());
+            Device device = deviceRegistry.getDeviceById(dto.getDeviceNumber().longValue());
 
             if (device != null) {
                 device.setPlannedRoute(dto.getPlannedRoute());
