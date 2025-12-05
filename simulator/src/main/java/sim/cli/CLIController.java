@@ -10,10 +10,7 @@ import sim.kafka.RouteRequestProducer;
 import sim.graph.UndirectedGraph;
 import sim.core.Device;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class CLIController {
 
@@ -183,7 +180,14 @@ public class CLIController {
             while (device.getProgressOnEdge() < 1.0 && device.getFuelLevel() > 0) {
 
                 //same logic as movement engine
-                 double speed = device.getSpeed();
+                int minChange = 10;
+                int maxChange = 20;
+                Random random = new Random();
+                double speedChangeVariable = random.nextDouble(maxChange - minChange + 1) + minChange;
+                double speedPercentage = random.nextBoolean() ? -speedChangeVariable : speedChangeVariable;
+                double percentToAdd = (speedPercentage/100) * maxSpeedOfVehicle(device.getDeviceType());
+
+                 double speed = maxSpeedOfVehicle(device.getDeviceType()) + percentToAdd;
                  System.out.println("Speed: " + speed);
                  double kmPerSecond = speed / 3600;
                  double deltaSeconds = 200.0;  // 200 delta seconds per tick
@@ -207,7 +211,7 @@ public class CLIController {
                 //printing progress
                  System.out.println("  Progress: " + (int)(device.getProgressOnEdge() * 100) + "%");
                  System.out.println("  Fuel level: " + device.getFuelLevel());
-                 telemetryProducer.publishTelemetry(buildTelemetry(device, fromNode));
+                 telemetryProducer.publishTelemetry(buildTelemetry(device, fromNode, speed));
 
                 //sleeping for real like simulation
                  Thread.sleep(1000);
@@ -226,13 +230,13 @@ public class CLIController {
         // Print "Journey complete!"
     }
 
-    private DeviceTelemetryDTO buildTelemetry(Device device, Integer previousLocation) {
+    private DeviceTelemetryDTO buildTelemetry(Device device, Integer previousLocation, Double speed) {
         DeviceTelemetryDTO dto = DeviceTelemetryDTO.builder()
                 .deviceId(device.getId())
                 .deviceNumber(device.getDeviceNumber())
                 .currentLocation(device.getCurrentNodeId())
                 .previousLocation(previousLocation)
-                .speed(device.getSpeed())
+                .speed(speed)
                 .engineOn(device.getEngineOn())
                 .engineTemp(device.getEngineTemp())
                 .fuelLevel(device.getFuelLevel())
@@ -261,6 +265,29 @@ public class CLIController {
             }
             case Motorcycle ->   {
                 return 40.0;
+            }
+        }
+    }
+
+    private Double maxSpeedOfVehicle(DeviceType deviceType) {
+        switch (deviceType) {
+            default -> {
+                return 45.0;
+            }
+            case Car -> {
+                return 120.0;
+            }
+            case Van ->  {
+                return 80.0;
+            }
+            case Plane ->   {
+                return 550.0;
+            }
+            case Truck ->   {
+                return 100.0;
+            }
+            case Motorcycle ->   {
+                return 160.0;
             }
         }
     }
