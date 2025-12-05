@@ -47,6 +47,9 @@ public class CLIController {
                     moveDevice();
                     break;
                 case 3:
+                    viewActiveDevices();
+                    break;
+                case 4:
                     running = false;
                     System.out.println("Simulator finished.");
                     break;
@@ -62,8 +65,10 @@ public class CLIController {
         System.out.println("1. View devices");
         // 2. Move Device
         System.out.println("2. Move device");
-        // 3. Exit
-        System.out.println("3. Exit");
+        // 3. View Active Devices
+        System.out.println("3. View route");
+        // 4. Exit
+        System.out.println("4. Exit");
         // "Enter choice: "
         System.out.println("Select an option:");
     }
@@ -95,6 +100,25 @@ public class CLIController {
         }
     }
 
+    private void viewActiveDevices() {
+        Collection<Device> devices = deviceRegistry.getAllDevices();
+
+        if(devices.isEmpty()) {
+            System.out.println("No active devices found.");
+        }
+
+        else {
+            for (Device device : devices) {
+                if(device.getState() == DeviceState.InRoute)
+                System.out.println("Device ID: " + device.getId()
+                        + ", Type: " + device.getDeviceType()
+                        + ", Progress: " + (int)(device.getProgressOnEdge() * 100) + "%"
+                        + ", the engine is " + engineOnOrOff(device.getEngineOn())
+                        + ", route: " + device.getPlannedRoute());
+            }
+        }
+    }
+
     private void moveDevice() throws InterruptedException {
         viewDevices();
 
@@ -106,6 +130,10 @@ public class CLIController {
 
         if(device == null) {
             System.out.println("Invalid device ID.");
+            return;
+        }
+        if (device.getState() == DeviceState.InRoute){
+            System.out.print("This device is already in route. Wait until it's arrived.");
             return;
         }
 
@@ -139,7 +167,16 @@ public class CLIController {
             System.out.println("Timeout: No route received from Route Service");
             return;
         }
-        executeRoute(device, device.getPlannedRoute());
+
+        Thread executeThread = new Thread(() -> {
+            try {
+                executeRoute(device, device.getPlannedRoute());
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                System.out.println("Route execution interrupted for device " + device.getId());
+            }
+        });
+        executeThread.start();
     }
 
     private void displayAvailableCities() {
@@ -214,7 +251,7 @@ public class CLIController {
                  telemetryProducer.publishTelemetry(buildTelemetry(device, fromNode, speed));
 
                 //sleeping for real like simulation
-                 Thread.sleep(1000);
+                 Thread.sleep(10000);
             }
 
             //arriving at next node
