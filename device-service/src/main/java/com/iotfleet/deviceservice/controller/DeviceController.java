@@ -33,12 +33,21 @@ public class DeviceController {
      * @param deviceNumber - device number from URL path
      * @return ResponseEntity with device and HTTP 200 status
      */
-    @GetMapping("/{deviceNumber}")
-    public ResponseEntity<Device> getDeviceByNumber(@PathVariable Integer deviceNumber) {
-        Device device = deviceService.getDeviceByNumber(deviceNumber);
-        return ResponseEntity.ok(device);
+//    @GetMapping("/{deviceNumber}")
+//    public ResponseEntity<Device> getDeviceByNumber(@PathVariable Integer deviceNumber) {
+//        Device device = deviceService.getDeviceByNumber(deviceNumber);
+//        return ResponseEntity.ok(device);
+//    }
+/**
+ * GET /api/devices/{deviceNumber}
+ * @param deviceId - device id from URL path
+ * @return ResponseEntity with device and HTTP 200 status
+ */
+    @GetMapping("/{deviceId}")
+    public ResponseEntity<Device> getDeviceById(@PathVariable Long deviceId) {
+       Device device = deviceService.getDeviceById(deviceId);
+       return ResponseEntity.ok(device);
     }
-
     /**
      * GET /api/devices
      * @return ResponseEntity with list of all devices and HTTP 200 status

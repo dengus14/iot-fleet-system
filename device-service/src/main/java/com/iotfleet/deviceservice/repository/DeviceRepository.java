@@ -8,7 +8,7 @@ import java.util.List;
 public interface DeviceRepository extends JpaRepository<Device,Long> {
     List<Device> findAllByEngineTemp(Double engineTemp);
     List<Device> findAll();
-    Device findByDeviceNumber(Integer deviceId);
+    Device findByDeviceNumber(Integer deviceId);//huita
     List<Device> findAllByCurrentLocation(Integer locationId);
     Device deleteByDeviceNumber(Integer deviceNumber);
 }
