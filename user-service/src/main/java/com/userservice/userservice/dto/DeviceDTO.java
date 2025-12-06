@@ -1,7 +1,11 @@
 package com.userservice.userservice.dto;
 
 import jakarta.persistence.Column;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
+
+@Data
 public class DeviceDTO {
     private Long id;
 

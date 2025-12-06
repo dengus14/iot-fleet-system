@@ -16,13 +16,22 @@ public class DeviceController {
     private final DeviceServiceProxy deviceServiceProxy;
 
     @GetMapping("/{id}")
-    public DeviceDTO getDevice(@PathVariable Long deviceId){
-        return deviceServiceProxy.getDevice(deviceId);
+    public DeviceDTO getDevice(@PathVariable Long id){
+        return deviceServiceProxy.getDevice(id);
 
     }
 
     @GetMapping
     public List<DeviceDTO> getAllDevices(){
         return deviceServiceProxy.getDevices();
+    }
+
+    @PostMapping("/{id}/move")
+    public String moveDevice(@PathVariable Long id, @RequestBody DeviceDTO deviceDTO){
+
+        deviceServiceProxy.getDevice(id);
+        //todo
+
+        return "Route Sent Successfully";
     }
 }
