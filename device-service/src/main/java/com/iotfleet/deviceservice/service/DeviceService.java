@@ -79,6 +79,11 @@ public class DeviceService {
         return device;
     }
 
+    public Device getDeviceById(Long deviceId) {
+        return deviceRepository.findById(deviceId)
+                .orElseThrow(() -> new RuntimeException("Device not found"));
+    }
+
     /**
      * @return list of all devices
      */
