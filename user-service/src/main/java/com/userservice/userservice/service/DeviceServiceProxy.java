@@ -1,6 +1,7 @@
 package com.userservice.userservice.service;
 
 import com.userservice.userservice.dto.DeviceDTO;
+import com.userservice.userservice.dto.DeviceRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,11 @@ public class DeviceServiceProxy {
         return restTemplate.getForEntity(deviceServiceUrl+"/"+deviceId, DeviceDTO.class).getBody();
 
 
+    }
+
+    public DeviceDTO createDevice(DeviceRequestDTO deviceDTO){
+
+        return restTemplate.postForEntity(deviceServiceUrl, deviceDTO, DeviceDTO.class).getBody();
     }
 
 }
