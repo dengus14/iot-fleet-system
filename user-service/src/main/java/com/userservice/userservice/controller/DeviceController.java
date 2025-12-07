@@ -2,6 +2,7 @@ package com.userservice.userservice.controller;
 
 
 import com.userservice.userservice.dto.DeviceDTO;
+import com.userservice.userservice.dto.DeviceRequestDTO;
 import com.userservice.userservice.dto.MoveRequest;
 import com.userservice.userservice.dto.RouteRequestDTO;
 import com.userservice.userservice.kafka.RouteRequestProducer;
@@ -29,6 +30,11 @@ public class DeviceController {
     @GetMapping
     public List<DeviceDTO> getAllDevices(){
         return deviceServiceProxy.getDevices();
+    }
+
+    @PostMapping
+    public DeviceDTO createDevice(@RequestBody DeviceRequestDTO deviceDTO){
+        return deviceServiceProxy.createDevice(deviceDTO);
     }
 
     @PostMapping("/{id}/move")
