@@ -38,8 +38,7 @@ private MovementEngine movementEngine;
 
         registry = new DeviceRegistry();
         registry.loadInitialDevices(deviceList);
-        RouteCommandConsumer kafkaConsumer = new RouteCommandConsumer(registry);
-        kafkaConsumer.startListening();
+
 
         DeviceConfigConsumer deviceConfigConsumer = new DeviceConfigConsumer(registry);
         deviceConfigConsumer.startListening();
@@ -49,6 +48,9 @@ private MovementEngine movementEngine;
         RouteRequestProducer routeRequestProducer = new RouteRequestProducer();
         TelemetryProducer telemetryProducer = new TelemetryProducer();
         CLIController cli = new CLIController(registry, routeRequestProducer, graph, telemetryProducer);
+        RouteCommandConsumer kafkaConsumer = new RouteCommandConsumer(registry,cli);
+        kafkaConsumer.startListening();
+
         cli.run();
     }
 

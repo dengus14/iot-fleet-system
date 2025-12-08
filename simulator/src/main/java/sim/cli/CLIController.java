@@ -191,7 +191,7 @@ public class CLIController {
     }
 
 
-    private void executeRoute(Device device, List<Integer> route) throws InterruptedException {
+    public void executeRoute(Device device, List<Integer> route) throws InterruptedException {
         System.out.println("Starting route: " + route);
 
         //setting device state and engine on
