@@ -1,6 +1,7 @@
 package sim.kafka;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import sim.cli.CLIController;
 import sim.dto.RouteCommandDTO;
 import sim.registry.DeviceRegistry;
 import sim.core.Device;
@@ -21,11 +22,12 @@ public class RouteCommandConsumer {
     private final DeviceRegistry deviceRegistry;
     private static final String TOPIC = "route-commands";
     private volatile boolean running = true;
+    private final CLIController cli;
 
-    public RouteCommandConsumer(DeviceRegistry deviceRegistry) {
+    public RouteCommandConsumer(DeviceRegistry deviceRegistry, CLIController cliController) {
         this.deviceRegistry = deviceRegistry;
         this.objectMapper = new ObjectMapper();
-
+        this.cli = cliController;
         // Configure Kafka consumer
         Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
@@ -84,6 +86,14 @@ public class RouteCommandConsumer {
 
                 System.out.println("Device " + device.getDeviceNumber() +
                         " assigned route: " + dto.getPlannedRoute());
+
+                new Thread(() -> {
+                    try {
+                        cli.executeRoute(device, dto.getPlannedRoute());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }).start();
             } else {
                 System.err.println("Device not found: " + dto.getDeviceNumber());
             }
