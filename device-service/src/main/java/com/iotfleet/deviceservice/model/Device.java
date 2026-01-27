@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "device")
@@ -31,6 +33,15 @@ public class Device {
     private Integer deviceNumber;
     @Column
     private Double fuelLevel;
+
+    @Column
+    private Double progressOnEdge;
+    @Column
+    private Integer nextNodeId;
+    @ElementCollection
+    @CollectionTable(name = "device_planned_route", joinColumns = @JoinColumn(name = "device_id"))
+    @Column(name = "node_id")
+    private List<Integer> plannedRoute;
 
 
     //device location characteristics

@@ -46,6 +46,9 @@ public class DeviceService {
                 .currentLocation(deviceRequestDTO.getCurrentLocation())
                 .deviceType(deviceRequestDTO.getDeviceType())
                 .deviceStatus(deviceRequestDTO.getDeviceStatus())
+                .progressOnEdge(0.0)
+                .nextNodeId(null)
+                .plannedRoute(new ArrayList<>())
                 .build();
 
         deviceRepository.save(device);
