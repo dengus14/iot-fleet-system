@@ -45,7 +45,7 @@ public class TelemetryProducer {
                 }
             });
 
-            System.out.println("Sent telemetry request  " + " for device " + dto.getDeviceId());
+            System.out.println("Sent telemetry request  " + "for device " + dto.getDeviceId());
 
         } catch (Exception e) {
             System.err.println("Error sending telemetry request: " + e.getMessage());

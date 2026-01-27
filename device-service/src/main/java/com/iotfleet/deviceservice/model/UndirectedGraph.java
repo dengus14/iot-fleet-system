@@ -55,12 +55,14 @@ public class UndirectedGraph {
     }
 
     public void createEdges(){
-        for(UndirectedNode node: nodes){
-            for(Integer id: node.getNeighbors()){
-                Double weight = getRandomDistance(30,600);
-                addWeightedEdge(node.getId(), id, weight);
-            }
-        }
+        addWeightedEdge(0, 1, 148.0);  // Chicago - Milwaukee
+        addWeightedEdge(0, 2, 290.0);  // Chicago - Indianapolis
+        addWeightedEdge(0, 3, 382.0);  // Chicago - Detroit
+        addWeightedEdge(1, 4, 121.0);  // Milwaukee - Madison
+        addWeightedEdge(2, 5, 821.0);  // Indianapolis - Minneapolis
+        addWeightedEdge(2, 6, 270.0);  // Indianapolis - Columbus
+        addWeightedEdge(3, 6, 263.0);  // Detroit - Columbus
+        addWeightedEdge(4, 5, 422.0);  // Madison - Minneapolis
     }
 
     public List<Integer> getNeighbors(Integer u) {
