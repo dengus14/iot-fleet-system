@@ -10,6 +10,10 @@ import sim.kafka.RouteRequestProducer;
 import sim.graph.UndirectedGraph;
 import sim.core.Device;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.*;
 
 public class CLIController {
@@ -190,6 +194,27 @@ public class CLIController {
         return graph.getCityName(nodeId);
     }
 
+    private void syncPositionToBackend(Device device){
+        try{
+            String url = String.format(
+                    "http://localhost:8081/api/devices/%d/position?currentLocation=%d&nextNodeId=%d&progressOnEdge=%.2f",
+                    device.getId(),
+                    device.getCurrentNodeId(),
+                    device.getNextNodeId() != null ? device.getNextNodeId() : device.getCurrentNodeId(),
+                    device.getProgressOnEdge());
+
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(url))
+                    .PUT(HttpRequest.BodyPublishers.noBody())
+                    .build();
+            client.send(request, HttpResponse.BodyHandlers.ofString());
+        }
+        catch (Exception e){
+            System.err.println("Error getting position to the backend: " + e.getMessage());
+        }
+    }
+
 
     public void executeRoute(Device device, List<Integer> route) throws InterruptedException {
         System.out.println("Starting route: " + route);
@@ -203,6 +228,7 @@ public class CLIController {
             int fromNode = route.get(i);
             int toNode = route.get(i + 1);
 
+            device.setNextNodeId(toNode);
 
             System.out.print("Route from " + getCityName(fromNode) + " to " + getCityName(toNode) + ": ");
 
@@ -234,6 +260,8 @@ public class CLIController {
 
                 //updating progress
                  device.setProgressOnEdge(device.getProgressOnEdge() + progressIncrement);
+
+                 syncPositionToBackend(device);
 
                 //movement engine logic for fuel
                  double fuelConsumed = kmThisTick / fuelConsumption(device.getDeviceType());

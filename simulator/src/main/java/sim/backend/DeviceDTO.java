@@ -3,6 +3,8 @@ package sim.backend;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class DeviceDTO {
 
@@ -20,4 +22,8 @@ public class DeviceDTO {
     private Integer startLocation;
     private Integer currentLocation;
     private String deviceStatus;
+
+    private Double progressOnEdge;
+    private Integer nextNodeId;
+    private List<Integer> plannedRoute;
 }

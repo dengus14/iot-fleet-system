@@ -87,13 +87,8 @@ public class RouteCommandConsumer {
                 System.out.println("Device " + device.getDeviceNumber() +
                         " assigned route: " + dto.getPlannedRoute());
 
-                new Thread(() -> {
-                    try {
-                        cli.executeRoute(device, dto.getPlannedRoute());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }).start();
+                device.setPlannedRoute(dto.getPlannedRoute());
+                System.out.println("Route received and set for device " + device.getDeviceNumber());
             } else {
                 System.err.println("Device not found: " + dto.getDeviceNumber());
             }

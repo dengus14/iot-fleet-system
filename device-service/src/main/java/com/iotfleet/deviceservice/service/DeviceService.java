@@ -82,6 +82,17 @@ public class DeviceService {
         return device;
     }
 
+    public Device updateDevicePosition(Long deviceId, Integer currentLocation, Integer nextNodeId, Double progressOnEdge) {
+        Device device = deviceRepository.findById(deviceId)
+                .orElseThrow(() -> new RuntimeException("Device not found"));
+
+        device.setCurrentLocation(currentLocation);
+        if (nextNodeId != null) device.setNextNodeId(nextNodeId);
+        if (progressOnEdge != null) device.setProgressOnEdge(progressOnEdge);
+
+        return deviceRepository.save(device);
+    }
+
     public Device getDeviceById(Long deviceId) {
         return deviceRepository.findById(deviceId)
                 .orElseThrow(() -> new RuntimeException("Device not found"));

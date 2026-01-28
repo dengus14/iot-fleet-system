@@ -110,4 +110,14 @@ public class DeviceController {
         deviceService.deleteDevice(deviceNumber);
         return ResponseEntity.noContent().build();
     }
+
+
+    @PutMapping("/{deviceId}/position")
+    public ResponseEntity<Device> updateDevicePosition(@PathVariable Long deviceId,
+                                                       @RequestParam Integer currentLocation,
+                                                       @RequestParam(required = false) Integer nextNodeId,
+                                                       @RequestParam(required = false) Double progressOnEdge){
+        Device device = deviceService.updateDevicePosition(deviceId, currentLocation, nextNodeId, progressOnEdge);
+        return ResponseEntity.ok(device);
+    }
 }
