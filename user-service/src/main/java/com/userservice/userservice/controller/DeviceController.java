@@ -38,17 +38,17 @@ public class DeviceController {
     }
 
     @PostMapping("/{id}/move")
-    public String moveDevice(@PathVariable Long id, @RequestBody MoveRequest moveRequest){
+    public String moveDevice(
+            @PathVariable Long id,
+            @RequestParam Integer destination) {  // Changed from @RequestBody
 
         DeviceDTO device = deviceServiceProxy.getDevice(id);
-
-
 
         RouteRequestDTO routeRequestDTO = RouteRequestDTO.builder()
                 .requestId(UUID.randomUUID().toString())
                 .deviceNumber(id.intValue())
                 .currentLocation(device.getCurrentLocation())
-                .destination(moveRequest.getDestination())
+                .destination(destination)  // Use directly
                 .build();
         routeRequestProducer.sendRouteRequest(routeRequestDTO);
         return "Route Sent Successfully";
