@@ -5,6 +5,7 @@ assign them routes across a graph of Midwest cities, and they travel between nod
 in real time consuming fuel based on vehicle type. Services communicate asynchronously 
 through Kafka and a Java CLI simulator drives the movement.
 
+
 &nbsp;
 
 ## Tech Stack
