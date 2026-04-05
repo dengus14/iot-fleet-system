@@ -89,6 +89,17 @@ public class RouteCommandConsumer {
 
                 device.setPlannedRoute(dto.getPlannedRoute());
                 System.out.println("Route received and set for device " + device.getDeviceNumber());
+
+                Thread executeThread = new Thread(() -> {
+                    try {
+                        cli.executeRoute(device, device.getPlannedRoute());
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        System.out.println("Route execution interrupted for device " + device.getId());
+                    }
+                });
+                executeThread.start(); // ← THIS IS MISSING!
+
             } else {
                 System.err.println("Device not found: " + dto.getDeviceNumber());
             }

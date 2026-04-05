@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface TelemetryRepository extends JpaRepository<TelemetryRecord, Long> {
     List<TelemetryRecord> findByDeviceNumber(Integer deviceNumber);
+    List<TelemetryRecord> findByDeviceNumberOrderByTimestampDesc(Integer deviceNumber);
 }
